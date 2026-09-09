@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,6 +129,86 @@
         footer { padding: 22px 0; background: var(--green); color: #c7ddd2; font-size: .78rem; }
         .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255,255,255,.2); padding-top: 20px; }
 
+        :root {
+            --ink: #222222;
+            --muted: #686868;
+            --paper: #ffffff;
+            --white: #ffffff;
+            --line: #e6e6e6;
+            --green: #222222;
+            --mint: #f5f5f5;
+            --orange: #777777;
+            --yellow: #f5f5f5;
+            --max-width: 920px;
+        }
+        body { font-family: "DM Sans", sans-serif; line-height: 1.65; }
+        .shell { width: min(var(--max-width), calc(100% - 48px)); }
+        .site-header { position: static; border-bottom: 0; background: var(--paper); backdrop-filter: none; }
+        .nav { min-height: 72px; border-bottom: 1px solid var(--line); }
+        .logo { font-size: 1rem; letter-spacing: 0; }
+        .logo span { color: var(--ink); }
+        .nav-links { gap: 20px; color: var(--muted); font-size: .82rem; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-cta { padding: 0; border: 0; color: var(--muted); border-radius: 0; font-weight: 400; }
+        .nav-cta:hover { color: var(--ink); }
+        .hero { padding: 92px 0 76px; overflow: visible; }
+        .hero::after { display: none; }
+        .hero-grid { grid-template-columns: 190px minmax(0, 1fr); gap: 64px; align-items: start; }
+        .eyebrow { margin-bottom: 18px; color: var(--muted); font-size: .72rem; letter-spacing: .08em; }
+        .eyebrow::before { display: none; }
+        h1, h2, h3 { font-family: "Space Grotesk", sans-serif; letter-spacing: -.04em; }
+        h1 { max-width: none; font-size: clamp(3rem, 7vw, 5.6rem); line-height: .98; }
+        .hero-lead { max-width: 620px; margin: 26px 0 0; font-size: 1.05rem; }
+        .hero-side { align-self: start; grid-column: 1; grid-row: 1; }
+        .portrait-frame { width: 190px; height: 190px; margin: 0; border-radius: 50%; border: 0; box-shadow: none; transform: none; background: #eeeeee; }
+        .portrait-frame img { transform: none; }
+        .hero-grid > div:first-child { grid-column: 2; grid-row: 1; }
+        .hero-note { display: none; }
+        .hero-note strong { margin-top: 8px; color: var(--ink); font-size: .7rem; letter-spacing: .06em; }
+        .hero-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 28px; color: #1538a5; font-size: .92rem; }
+        .hero-links a:hover { text-decoration: underline; }
+        .section { padding: 64px 0; border-top: 1px solid var(--line); }
+        .section-heading { grid-template-columns: 170px minmax(0, 1fr); gap: 40px; margin-bottom: 32px; }
+        .section-kicker { color: var(--muted); font-size: .72rem; letter-spacing: .08em; }
+        h2 { max-width: 620px; font-size: clamp(1.8rem, 4vw, 3rem); }
+        .intro-copy { max-width: 620px; margin: 14px 0 0; font-size: .98rem; }
+        .tag-row { gap: 6px; margin-top: 16px; }
+        .tag { padding: 3px 8px; border-radius: 3px; background: var(--mint); color: var(--muted); font-size: .7rem; }
+        .timeline { grid-template-columns: 1fr; gap: 0; }
+        .timeline-item { grid-template-columns: 160px minmax(0, 1fr); gap: 28px; padding: 22px 0; }
+        .timeline-item:first-child { border-top: 1px solid var(--line); }
+        .date { font-size: .8rem; }
+        .timeline h3 { margin-bottom: 5px; font-size: 1.12rem; letter-spacing: -.03em; }
+        .timeline p { font-size: .92rem; }
+        .experience-meta { display: flex; align-items: flex-start; gap: 10px; }
+        .company-icon { order: -1; flex: 0 0 46px; width: 46px; height: 46px; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: 4px; background: var(--mint); color: var(--ink); font-size: .62rem; font-weight: 700; line-height: 1; text-align: center; }
+        .company-icon.pwc { background: #fff1ed; color: #d04a2d; }
+        .company-icon.iit { background: #eef4f7; color: #1d5a70; }
+        .company-icon.fbm { background: #fdf0f0; color: #b21f2d; }
+        .company-icon.ymca { background: #eef8fc; color: #009bd1; }
+        .company-icon.education { background: #f7f7f7; color: #444444; }
+        .company-icon img { width: 38px; height: 38px; object-fit: contain; }
+        .project-grid, .hub-grid { grid-template-columns: 1fr; gap: 0; }
+        .project, .hub-card { min-height: 0; padding: 22px 0; display: block; background: transparent !important; border: 0; border-top: 1px solid var(--line); transition: none; }
+        .project:hover { transform: none; box-shadow: none; }
+        .project h3, .hub-card h3 { max-width: 620px; margin-top: 7px; font-size: 1.3rem; letter-spacing: -.03em; }
+        .project p, .hub-card p { max-width: 620px; margin: 7px 0 0; font-size: .92rem; }
+        .project-link { display: inline-block; margin-top: 12px; color: var(--ink); font-size: .85rem; font-weight: 600; }
+        .project-link::after { color: var(--muted); }
+        .hub-card .project-link { align-self: auto; }
+        .hub-list { max-width: 620px; margin: 14px 0 0; }
+        .hub-list li { padding: 7px 0; font-size: .85rem; }
+        .cv-label, .project-type { color: var(--muted); font-size: .68rem; letter-spacing: .08em; }
+        .contact { padding: 64px 0 36px; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); }
+        .contact-grid { grid-template-columns: minmax(0, 1fr) 180px; gap: 40px; }
+        .contact h2 { max-width: 620px; font-size: clamp(2rem, 5vw, 3.8rem); }
+        .contact-copy { color: var(--muted); font-size: .95rem; }
+        .contact-links { gap: 8px; }
+        .contact-link { border-color: var(--line); font-size: .88rem; }
+        .contact-link:hover { color: var(--ink); border-color: var(--ink); }
+        footer { padding: 18px 0; background: var(--paper); color: var(--muted); }
+        .footer-inner { border-top: 0; padding-top: 0; font-size: .72rem; }
+
         @media (max-width: 800px) {
             .shell { width: min(100% - 40px, var(--max-width)); }
             .nav { min-height: 68px; }
@@ -160,7 +240,6 @@
         <nav class="nav shell" aria-label="Main navigation">
             <a class="logo" href="#inicio">MG<span>.</span></a>
             <div class="nav-links">
-                <a href="#perfil">Profile</a>
                 <a href="#trayectoria">Experience</a>
                 <a href="#proyectos">Projects</a>
                 <a href="#educacion">Education</a>
@@ -177,37 +256,24 @@
                 <div>
                     <p class="eyebrow">Resume · Madrid</p>
                     <h1>Miguel<br>Gabaldón<br>Poncela<span style="color: var(--orange);">.</span></h1>
-                    <p class="hero-lead">Student and developer focused on artificial intelligence, computer vision and software. This is my resume, my work and the evolution of what I am learning.</p>
+                    <p class="hero-lead">I am a Mathematical Engineering and Artificial Intelligence student at Universidad Pontificia Comillas. I am interested in artificial intelligence, computer vision and building software that turns technical ideas into useful systems.</p>
+                    <div class="hero-links" aria-label="Social links">
+                        <a href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://www.linkedin.com/in/miguel-gabald%C3%B3n-poncela-8237082b/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="#contacto">Contact</a>
+                    </div>
                 </div>
                 <div class="hero-side">
                     <div class="portrait-frame">
-                        <img src="https://avatars.githubusercontent.com/u/193833541?v=4" alt="Miguel Gabaldón Poncela">
+                        <img src="profile.jpg" alt="Miguel Gabaldón Poncela" onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/193833541?v=4';">
                     </div>
-                    <p class="hero-note">A selection of experience, projects and technical interests.<strong>Open to connecting</strong></p>
                 </div>
-            </div>
-        </section>
-
-        <section class="section shell" id="perfil">
-            <div class="section-heading">
-                <span class="section-kicker">01 / Profile</span>
-                <div>
-                    <h2>Technical curiosity, grounded in code.</h2>
-                    <p class="intro-copy">My work brings together deep learning, computer vision and product development. I enjoy understanding how things work and turning that knowledge into useful, measurable and well-built prototypes.</p>
-                </div>
-            </div>
-            <div class="tag-row">
-                <span class="tag">Python</span>
-                <span class="tag">Computer Vision</span>
-                <span class="tag">Deep Learning</span>
-                <span class="tag">Robotics</span>
-                <span class="tag">Software</span>
             </div>
         </section>
 
         <section class="section shell" id="trayectoria">
             <div class="section-heading">
-                    <span class="section-kicker">02 / Experience</span>
+                    <span class="section-kicker">01 / Experience</span>
                 <div>
                     <h2>Learning by building.</h2>
                     <p class="intro-copy">A brief overview of my academic and practical experience. I will expand this section with new roles, collaborations and achievements.</p>
@@ -215,23 +281,35 @@
             </div>
             <div class="timeline">
                 <article class="timeline-item">
-                    <span class="date">Ongoing</span>
-                    <div><h3>University studies</h3><p>Studies and project development within ICAI / Universidad Pontificia Comillas.</p><div class="tag-row"><span class="tag">Education</span><span class="tag">AI</span></div></div>
+                    <div class="experience-meta"><span class="date">Jun 2026 — Jul 2026<br>2 mos</span><span class="company-icon pwc" aria-label="PwC"><img src="pwc.jpg" alt="PwC logo"></span></div>
+                    <div><h3>Deals Intern</h3><p><strong>PwC</strong><br>Madrid, Community of Madrid, Spain · On-site</p><p>Member of the Financial Decisions and Analysis (FDnA) department, within Deals, as part of the Summer Excellence Programme.</p><div class="tag-row"><span class="tag">Financial Analysis</span><span class="tag">Deals</span></div></div>
                 </article>
                 <article class="timeline-item">
-                    <span class="date">2025 — 2026</span>
-                    <div><h3>Computer vision development</h3><p>Interactive security and tracking system built with Python and OpenCV to recognize gestures and respond in real time.</p><div class="tag-row"><span class="tag">Python</span><span class="tag">OpenCV</span></div></div>
+                    <div class="experience-meta"><span class="date">Oct 2025 — Jun 2026<br>9 mos</span><span class="company-icon iit" aria-label="Instituto de Investigación Tecnológica"><img src="iit.jfif" alt="IIT logo"></span></div>
+                    <div><h3>Research Assistant in Modeling and Regulatory Analysis of Energy Systems</h3><p><strong>Instituto de Investigación Tecnológica</strong> · Internship<br>Madrid, Community of Madrid, Spain · On-site</p><p>Research Assistant in Modeling and Regulatory Analysis of Energy Systems under the leadership of Dr. Carlos Batlle.</p><div class="tag-row"><span class="tag">Research</span><span class="tag">Energy Systems</span></div></div>
                 </article>
                 <article class="timeline-item">
-                    <span class="date">Present</span>
-                    <div><h3>Portfolio and personal projects</h3><p>Public documentation of my learning, experiments and the projects I want to keep developing.</p></div>
+                    <div class="experience-meta"><span class="date">Sep 2024 — May 2026<br>1 yr 9 mos</span><span class="company-icon fbm" aria-label="Federación de Baloncesto de Madrid"><img src="fbm.jfif" alt="FBM logo"></span></div>
+                    <div><h3>Table Official</h3><p><strong>FBM (Federación de Baloncesto de Madrid)</strong><br>Madrid, Community of Madrid, Spain</p><p>Official table staff for basketball competitions.</p><div class="tag-row"><span class="tag">Sports Coaching</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Sep 2025<br>1 mo</span><span class="company-icon fbm" aria-label="Federación de Baloncesto de Madrid"><img src="fbm.jfif" alt="FBM logo"></span></div>
+                    <div><h3>Basketball Coach</h3><p><strong>FBM (Federación de Baloncesto de Madrid)</strong><br>Madrid, Community of Madrid, Spain · On-site</p><p>Coach at the Summer Camp of the Madrid Basketball Federation.</p><div class="tag-row"><span class="tag">Sports Coaching</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Jun 2025 — Aug 2025<br>3 mos</span><span class="company-icon ymca" aria-label="YMCA of Greater Hartford"><img src="ymca.png" alt="YMCA logo"></span></div>
+                    <div><h3>Overnight Senior Counselor</h3><p><strong>YMCA of Greater Hartford</strong> · Direct Contract<br>Woodstock, Connecticut, United States · On-site</p><div class="tag-row"><span class="tag">Sports Coaching</span><span class="tag">English</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Sep 2022 — Aug 2024<br>2 yrs</span><span class="company-icon education" aria-label="Colegio Nuestra Señora del Buen Consejo">B.C.</span></div>
+                    <div><h3>Head Coach</h3><p><strong>Colegio Nuestra Señora del Buen Consejo</strong><br>Madrid, Community of Madrid, Spain · On-site</p><div class="tag-row"><span class="tag">Sports Coaching</span></div></div>
                 </article>
             </div>
         </section>
 
         <section class="section shell" id="proyectos">
             <div class="section-heading">
-                <span class="section-kicker">03 / Project hub</span>
+                <span class="section-kicker">02 / Project hub</span>
                 <div><h2>Ideas you can run.</h2><p class="intro-copy">A selection of public projects and repositories I have worked on. Each card links directly to its code.</p></div>
             </div>
             <div class="project-grid">
@@ -244,28 +322,28 @@
 
         <section class="section shell" id="educacion">
             <div class="section-heading">
-                <span class="section-kicker">04 / Education</span>
+                <span class="section-kicker">03 / Education</span>
                 <div><h2>The foundation for what comes next.</h2><p class="intro-copy">My academic background combines engineering, programming and artificial intelligence, with a focus on turning theory into projects.</p></div>
             </div>
             <div class="timeline">
                 <article class="timeline-item">
-                    <span class="date">Aug 2026 — May 2027</span>
+                    <div class="experience-meta"><span class="date">Aug 2026 — May 2027</span><span class="company-icon education" aria-label="University of Illinois Urbana-Champaign"><img src="uiuc.png" alt="University of Illinois logo"></span></div>
                     <div><h3>University of Illinois Urbana-Champaign</h3><p>Mathematics and Computer Science.</p><div class="tag-row"><span class="tag">Mathematics</span><span class="tag">Computer Science</span></div></div>
                 </article>
                 <article class="timeline-item">
-                    <span class="date">Sep 2023 — May 2027</span>
+                    <div class="experience-meta"><span class="date">Sep 2023 — May 2027</span><span class="company-icon education" aria-label="Universidad Pontificia Comillas">ICAi</span></div>
                     <div><h3>Universidad Pontificia Comillas</h3><p>Bachelor of Mathematical Engineering and A.I.</p><div class="tag-row"><span class="tag">Amazon Web Services (AWS)</span><span class="tag">C#</span><span class="tag">+9 skills</span></div></div>
                 </article>
                 <article class="timeline-item">
-                    <span class="date">High school</span>
+                    <div class="experience-meta"><span class="date">High school</span><span class="company-icon education" aria-label="Colegio Nuestra Señora del Buen Consejo">B.C.</span></div>
                     <div><h3>Colegio Nuestra Señora del Buen Consejo</h3><p>Science track.</p><div class="tag-row"><span class="tag">EVAU: 13.35/14</span></div></div>
                 </article>
                 <article class="timeline-item">
-                    <span class="date">Aug 2021 — Aug 2022</span>
+                    <div class="experience-meta"><span class="date">Aug 2021 — Aug 2022</span><span class="company-icon education" aria-label="Oak Hills High School"><img src="oakhills.png" alt="Oak Hills High School logo"></span></div>
                     <div><h3>Oak Hills High School</h3><p>Grade: 4.0/4.0. Varsity Soccer and Varsity Volleyball. Completed college credit courses including AP Chemistry, AP Calculus BC and AP Physics.</p><div class="tag-row"><span class="tag">English</span></div></div>
                 </article>
                 <article class="timeline-item">
-                    <span class="date">Feb 2016 — Aug 2019</span>
+                    <div class="experience-meta"><span class="date">Feb 2016 — Aug 2019</span><span class="company-icon education" aria-label="European School Varese">ESV</span></div>
                     <div><h3>European School Varese</h3><p>Grade: SUMMA CUM LAUDE.</p><div class="tag-row"><span class="tag">English</span><span class="tag">Arduino</span></div></div>
                 </article>
             </div>
@@ -273,7 +351,7 @@
 
         <section class="section shell" id="certificados">
             <div class="section-heading">
-                <span class="section-kicker">05 / Certificate hub</span>
+                <span class="section-kicker">04 / Certificate hub</span>
                 <div><h2>Learning you can verify.</h2><p class="intro-copy">This space will collect certificates, courses and credentials with their corresponding links or documents.</p></div>
             </div>
             <div class="hub-grid">
@@ -285,7 +363,7 @@
 
         <section class="section shell" id="research">
             <div class="section-heading">
-                <span class="section-kicker">06 / Research</span>
+                <span class="section-kicker">05 / Research</span>
                 <div><h2>Questions before answers.</h2><p class="intro-copy">A hub for research, reading, experiments and notes on artificial intelligence, computer vision and robotics.</p></div>
             </div>
             <div class="hub-grid">
@@ -298,7 +376,7 @@
 
     <section class="contact" id="contacto">
         <div class="shell contact-grid">
-            <div><p class="eyebrow" style="color: var(--yellow);">07 / Contact</p><h2>Let&apos;s talk about what&apos;s next.</h2><p class="contact-copy">I am building my next professional chapter. You can find me on GitHub or reach out through LinkedIn.</p></div>
+            <div><p class="eyebrow" style="color: var(--yellow);">06 / Contact</p><h2>Let&apos;s talk about what&apos;s next.</h2><p class="contact-copy">I am building my next professional chapter. You can find me on GitHub or reach out through LinkedIn.</p></div>
             <div class="contact-links"><a class="contact-link" href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">GitHub ↗</a><a class="contact-link" href="https://www.linkedin.com/in/miguel-gabald%C3%B3n-poncela-8237082b/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
         </div>
     </section>
