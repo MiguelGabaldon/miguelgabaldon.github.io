@@ -1,54 +1,308 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Personal Website</title>
-
+    <meta name="description" content="Personal website and portfolio of Miguel Gabaldón Poncela.">
+    <title>Miguel Gabaldón Poncela | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ink: #17221f;
+            --muted: #68736f;
+            --paper: #f5f6f1;
+            --white: #fffefa;
+            --line: #d9dfd8;
+            --green: #285b4b;
+            --mint: #dcece1;
+            --orange: #ef8255;
+            --yellow: #f1d980;
+            --max-width: 1180px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 80px auto;
-            padding: 20px;
-            text-align: center;
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.6;
         }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .shell { width: min(var(--max-width), calc(100% - 64px)); margin: 0 auto; }
 
-        h1 {
-            font-size: 40px;
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(217, 223, 216, .9);
+            background: rgba(245, 246, 241, .9);
+            backdrop-filter: blur(14px);
         }
-
-        p {
-            font-size: 18px;
-            color: #555;
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
         }
+        .logo { font-family: "Space Grotesk", sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: -.04em; }
+        .logo span { color: var(--orange); }
+        .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .88rem; }
+        .nav-links a { transition: color .2s ease; }
+        .nav-links a:hover { color: var(--green); }
+        .nav-cta { padding: 10px 16px; border: 1px solid var(--green); color: var(--green); border-radius: 999px; font-weight: 700; }
 
-        .success {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+        .hero { padding: 108px 0 120px; position: relative; overflow: hidden; }
+        .hero::after {
+            content: "";
+            width: 340px;
+            height: 340px;
+            position: absolute;
+            right: -100px;
+            top: 30px;
+            border: 1px solid var(--yellow);
+            border-radius: 50%;
+            opacity: .8;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 80px; align-items: end; position: relative; z-index: 1; }
+        .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; color: var(--green); font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+        .eyebrow::before { content: ""; width: 34px; height: 2px; background: var(--orange); }
+        h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.05; letter-spacing: -.06em; margin: 0; }
+        h1 { max-width: 760px; font-size: clamp(3.8rem, 8vw, 7.6rem); }
+        .hero-lead { max-width: 620px; margin: 30px 0 0; color: var(--muted); font-size: 1.2rem; }
+        .hero-side { align-self: center; }
+        .portrait-frame { width: 188px; height: 188px; margin-bottom: 26px; overflow: hidden; border-radius: 50% 50% 8px 50%; background: var(--mint); border: 10px solid var(--white); box-shadow: 0 14px 30px rgba(40, 91, 75, .12); transform: rotate(4deg); }
+        .portrait-frame img { width: 100%; height: 100%; object-fit: cover; transform: rotate(-4deg) scale(1.08); }
+        .hero-note { max-width: 230px; font-family: "Space Grotesk", sans-serif; font-size: 1rem; }
+        .hero-note strong { display: block; margin-top: 9px; color: var(--orange); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+
+        .section { padding: 100px 0; border-top: 1px solid var(--line); }
+        .section-heading { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 54px; }
+        .section-kicker { color: var(--orange); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+        h2 { max-width: 700px; font-size: clamp(2.2rem, 4vw, 4.2rem); }
+        .intro-copy { max-width: 590px; margin: 0; color: var(--muted); font-size: 1.08rem; }
+
+        .timeline { display: grid; grid-template-columns: 1fr 2fr; gap: 28px 40px; }
+        .timeline-item { display: grid; grid-template-columns: 145px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+        .timeline-item:first-child { border-top: 2px solid var(--green); }
+        .date { color: var(--muted); font-size: .84rem; }
+        .timeline h3 { margin-bottom: 8px; font-size: 1.32rem; letter-spacing: -.04em; }
+        .timeline p { margin: 0; color: var(--muted); }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+        .tag { padding: 5px 10px; border-radius: 4px; background: var(--mint); color: var(--green); font-size: .74rem; font-weight: 700; }
+
+        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+        .project { min-height: 300px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; background: var(--white); border: 1px solid var(--line); transition: transform .25s ease, box-shadow .25s ease; }
+        .project:hover { transform: translateY(-5px); box-shadow: 10px 12px 0 var(--yellow); }
+        .project:nth-child(2) { background: var(--green); color: var(--white); }
+        .project:nth-child(2) .project-type, .project:nth-child(2) p { color: #c7ddd2; }
+        .project:nth-child(3) { background: var(--yellow); }
+        .project-type { color: var(--orange); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+        .project h3 { max-width: 350px; margin-top: 36px; font-size: 1.85rem; letter-spacing: -.05em; }
+        .project p { max-width: 410px; margin: 12px 0 0; color: var(--muted); }
+        .project-link { margin-top: 28px; font-weight: 700; }
+        .project-link::after { content: "  ↗"; color: var(--orange); }
+
+        .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .hub-card { min-height: 250px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); background: var(--white); }
+        .hub-card:nth-child(2) { background: var(--mint); }
+        .hub-card:nth-child(3) { background: var(--yellow); }
+        .hub-card h3 { margin-top: 30px; font-size: 1.65rem; }
+        .hub-card p { margin: 12px 0 0; color: var(--muted); }
+        .hub-card .project-link { align-self: flex-start; }
+        .hub-list { margin: 26px 0 0; padding: 0; list-style: none; }
+        .hub-list li { padding: 12px 0; border-top: 1px solid rgba(23, 34, 31, .16); color: var(--muted); font-size: .92rem; }
+        .cv-label { color: var(--green); font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+        .contact { padding: 120px 0 80px; background: var(--green); color: var(--white); }
+        .contact-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 60px; align-items: end; }
+        .contact h2 { max-width: 680px; font-size: clamp(3rem, 6vw, 6.5rem); }
+        .contact-copy { max-width: 420px; margin: 24px 0 0; color: #c7ddd2; }
+        .contact-links { display: grid; gap: 14px; justify-items: start; }
+        .contact-link { padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,.35); font-weight: 600; }
+        .contact-link:hover { color: var(--yellow); border-color: var(--yellow); }
+        footer { padding: 22px 0; background: var(--green); color: #c7ddd2; font-size: .78rem; }
+        .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255,255,255,.2); padding-top: 20px; }
+
+        @media (max-width: 800px) {
+            .shell { width: min(100% - 40px, var(--max-width)); }
+            .nav { min-height: 68px; }
+            .nav-links { gap: 14px; font-size: .8rem; }
+            .nav-links a:nth-child(-n+3) { display: none; }
+            .hero { padding: 78px 0 88px; }
+            .hero-grid, .contact-grid, .section-heading { grid-template-columns: 1fr; gap: 36px; }
+            .hero-side { display: flex; align-items: center; gap: 22px; }
+            .portrait-frame { width: 126px; height: 126px; margin: 0; }
+            .hero::after { width: 220px; height: 220px; right: -130px; top: 180px; }
+            .section { padding: 76px 0; }
+            .timeline { grid-template-columns: 1fr; gap: 0; }
+            .timeline-item { grid-template-columns: 100px 1fr; gap: 14px; }
+            .project-grid, .hub-grid { grid-template-columns: 1fr; }
+            .project { min-height: 270px; }
+            .contact { padding: 84px 0 60px; }
+            .footer-inner { flex-direction: column; gap: 5px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 3.45rem; }
+            .hero-side { align-items: flex-start; flex-direction: column; }
+            .timeline-item { grid-template-columns: 1fr; }
+            .date { margin-bottom: -5px; }
         }
     </style>
 </head>
-
 <body>
+    <header class="site-header">
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="logo" href="#inicio">MG<span>.</span></a>
+            <div class="nav-links">
+                <a href="#perfil">Profile</a>
+                <a href="#trayectoria">Experience</a>
+                <a href="#proyectos">Projects</a>
+                <a href="#educacion">Education</a>
+                <a href="#certificados">Certificates</a>
+                <a href="#research">Research</a>
+                <a class="nav-cta" href="#contacto">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-    <h1>Hello! 👋</h1>
+    <main>
+        <section class="hero shell" id="inicio">
+            <div class="hero-grid">
+                <div>
+                    <p class="eyebrow">Resume · Madrid</p>
+                    <h1>Miguel<br>Gabaldón<br>Poncela<span style="color: var(--orange);">.</span></h1>
+                    <p class="hero-lead">Student and developer focused on artificial intelligence, computer vision and software. This is my resume, my work and the evolution of what I am learning.</p>
+                </div>
+                <div class="hero-side">
+                    <div class="portrait-frame">
+                        <img src="https://avatars.githubusercontent.com/u/193833541?v=4" alt="Miguel Gabaldón Poncela">
+                    </div>
+                    <p class="hero-note">A selection of experience, projects and technical interests.<strong>Open to connecting</strong></p>
+                </div>
+            </div>
+        </section>
 
-    <p>Welcome to my personal website.</p>
+        <section class="section shell" id="perfil">
+            <div class="section-heading">
+                <span class="section-kicker">01 / Profile</span>
+                <div>
+                    <h2>Technical curiosity, grounded in code.</h2>
+                    <p class="intro-copy">My work brings together deep learning, computer vision and product development. I enjoy understanding how things work and turning that knowledge into useful, measurable and well-built prototypes.</p>
+                </div>
+            </div>
+            <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Robotics</span>
+                <span class="tag">Software</span>
+            </div>
+        </section>
 
-    <div class="success">
-        <h2>🎉 GitHub Pages is working!</h2>
-        <p>
-            If you can see this page at
-            <strong>yourusername.github.io</strong>,
-            your website is being hosted correctly.
-        </p>
-    </div>
+        <section class="section shell" id="trayectoria">
+            <div class="section-heading">
+                    <span class="section-kicker">02 / Experience</span>
+                <div>
+                    <h2>Learning by building.</h2>
+                    <p class="intro-copy">A brief overview of my academic and practical experience. I will expand this section with new roles, collaborations and achievements.</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <span class="date">Ongoing</span>
+                    <div><h3>University studies</h3><p>Studies and project development within ICAI / Universidad Pontificia Comillas.</p><div class="tag-row"><span class="tag">Education</span><span class="tag">AI</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <span class="date">2025 — 2026</span>
+                    <div><h3>Computer vision development</h3><p>Interactive security and tracking system built with Python and OpenCV to recognize gestures and respond in real time.</p><div class="tag-row"><span class="tag">Python</span><span class="tag">OpenCV</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <span class="date">Present</span>
+                    <div><h3>Portfolio and personal projects</h3><p>Public documentation of my learning, experiments and the projects I want to keep developing.</p></div>
+                </article>
+            </div>
+        </section>
 
+        <section class="section shell" id="proyectos">
+            <div class="section-heading">
+                <span class="section-kicker">03 / Project hub</span>
+                <div><h2>Ideas you can run.</h2><p class="intro-copy">A selection of public projects and repositories I have worked on. Each card links directly to its code.</p></div>
+            </div>
+            <div class="project-grid">
+                <article class="project"><div><span class="project-type">Computer vision · Python</span><h3>Interactive security and tracking</h3><p>Camera calibration, QR code reading, hand tracking and gesture classification for a Rock, Paper, Scissors game.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/Proyecto-Final-Computer-Vision-I" target="_blank" rel="noopener">View repository</a></article>
+                <article class="project"><div><span class="project-type">Deep learning · Coursework</span><h3>Deep learning</h3><p>Academic repository focused on the foundations and practice of deep learning.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/deep-learning" target="_blank" rel="noopener">View repository</a></article>
+                <article class="project"><div><span class="project-type">Robotics · Simulation</span><h3>sim_ws</h3><p>Public workspace for robotics simulation and experimentation.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/sim_ws" target="_blank" rel="noopener">View repository</a></article>
+                <article class="project"><div><span class="project-type">Open source · Collaboration</span><h3>More projects</h3><p>Hackathons, experiments and other repositories documenting my work.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">Explore GitHub</a></article>
+            </div>
+        </section>
+
+        <section class="section shell" id="educacion">
+            <div class="section-heading">
+                <span class="section-kicker">04 / Education</span>
+                <div><h2>The foundation for what comes next.</h2><p class="intro-copy">My academic background combines engineering, programming and artificial intelligence, with a focus on turning theory into projects.</p></div>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <span class="date">Aug 2026 — May 2027</span>
+                    <div><h3>University of Illinois Urbana-Champaign</h3><p>Mathematics and Computer Science.</p><div class="tag-row"><span class="tag">Mathematics</span><span class="tag">Computer Science</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <span class="date">Sep 2023 — May 2027</span>
+                    <div><h3>Universidad Pontificia Comillas</h3><p>Bachelor of Mathematical Engineering and A.I.</p><div class="tag-row"><span class="tag">Amazon Web Services (AWS)</span><span class="tag">C#</span><span class="tag">+9 skills</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <span class="date">High school</span>
+                    <div><h3>Colegio Nuestra Señora del Buen Consejo</h3><p>Science track.</p><div class="tag-row"><span class="tag">EVAU: 13.35/14</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <span class="date">Aug 2021 — Aug 2022</span>
+                    <div><h3>Oak Hills High School</h3><p>Grade: 4.0/4.0. Varsity Soccer and Varsity Volleyball. Completed college credit courses including AP Chemistry, AP Calculus BC and AP Physics.</p><div class="tag-row"><span class="tag">English</span></div></div>
+                </article>
+                <article class="timeline-item">
+                    <span class="date">Feb 2016 — Aug 2019</span>
+                    <div><h3>European School Varese</h3><p>Grade: SUMMA CUM LAUDE.</p><div class="tag-row"><span class="tag">English</span><span class="tag">Arduino</span></div></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section shell" id="certificados">
+            <div class="section-heading">
+                <span class="section-kicker">05 / Certificate hub</span>
+                <div><h2>Learning you can verify.</h2><p class="intro-copy">This space will collect certificates, courses and credentials with their corresponding links or documents.</p></div>
+            </div>
+            <div class="hub-grid">
+                <article class="hub-card"><div><span class="cv-label">Coming soon</span><h3>Technical certificates</h3><p>Space prepared for Python, AI, cloud and development tool courses.</p></div><span class="project-link">Being updated</span></article>
+                <article class="hub-card"><div><span class="cv-label">Coming soon</span><h3>Courses and training</h3><p>Additional training listed with its date, institution and evidence.</p></div><span class="project-link">Being updated</span></article>
+                <article class="hub-card"><div><span class="cv-label">Format</span><h3>Credentials</h3><ul class="hub-list"><li>Certificate name</li><li>Issuing institution</li><li>Verification link</li></ul></div></article>
+            </div>
+        </section>
+
+        <section class="section shell" id="research">
+            <div class="section-heading">
+                <span class="section-kicker">06 / Research</span>
+                <div><h2>Questions before answers.</h2><p class="intro-copy">A hub for research, reading, experiments and notes on artificial intelligence, computer vision and robotics.</p></div>
+            </div>
+            <div class="hub-grid">
+                <article class="hub-card"><div><span class="cv-label">Area of interest</span><h3>Deep learning</h3><p>Foundations, models and practices explored in my academic work.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/deep-learning" target="_blank" rel="noopener">View repository</a></article>
+                <article class="hub-card"><div><span class="cv-label">Area of interest</span><h3>Computer vision</h3><p>Tracking, gestures, calibration and systems that interpret images in real time.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/Proyecto-Final-Computer-Vision-I" target="_blank" rel="noopener">View project</a></article>
+                <article class="hub-card"><div><span class="cv-label">Coming soon</span><h3>Notes and publications</h3><p>This space will collect results, lessons learned and relevant references.</p></div><span class="project-link">In preparation</span></article>
+            </div>
+        </section>
+    </main>
+
+    <section class="contact" id="contacto">
+        <div class="shell contact-grid">
+            <div><p class="eyebrow" style="color: var(--yellow);">07 / Contact</p><h2>Let&apos;s talk about what&apos;s next.</h2><p class="contact-copy">I am building my next professional chapter. You can find me on GitHub or reach out through LinkedIn.</p></div>
+            <div class="contact-links"><a class="contact-link" href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">GitHub ↗</a><a class="contact-link" href="https://www.linkedin.com/in/miguel-gabald%C3%B3n-poncela-8237082b/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+        </div>
+    </section>
+    <footer><div class="shell footer-inner"><span>© <span id="year"></span> Miguel Gabaldón Poncela</span><span>Built with curiosity and code.</span></div></footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
-```
