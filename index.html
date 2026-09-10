@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal website and portfolio of Miguel Gabaldón Poncela.">
     <title>Miguel Gabaldón Poncela | Portfolio</title>
+    <link rel="icon" type="image/jpeg" href="profile.jpg">
+    <link rel="apple-touch-icon" href="profile.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -180,6 +182,8 @@
         .date { font-size: .8rem; }
         .timeline h3 { margin-bottom: 5px; font-size: 1.12rem; letter-spacing: -.03em; }
         .timeline p { font-size: .92rem; }
+        .timeline p a { color: #1538a5; text-decoration: underline; text-underline-offset: 3px; }
+        .timeline p a:hover { color: var(--ink); }
         .experience-meta { display: flex; align-items: flex-start; gap: 10px; }
         .company-icon { order: -1; flex: 0 0 46px; width: 46px; height: 46px; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: 4px; background: var(--mint); color: var(--ink); font-size: .62rem; font-weight: 700; line-height: 1; text-align: center; }
         .company-icon.pwc { background: #fff1ed; color: #d04a2d; }
@@ -196,9 +200,32 @@
         .project-link { display: inline-block; margin-top: 12px; color: var(--ink); font-size: .85rem; font-weight: 600; }
         .project-link::after { color: var(--muted); }
         .hub-card .project-link { align-self: auto; }
+        .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+        .project { padding: 0 0 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--white) !important; }
+        .project-media { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #f2f2f2; }
+        .project-image { display: block; width: 100%; height: 100%; object-fit: cover; background: #f2f2f2; }
+        .project-body { padding: 20px 22px 0; }
+        .project h3 { margin-top: 10px; font-size: 1.35rem; }
+        .project p { margin: 14px 0 0; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .project-tag { padding: 5px 12px; border: 1px solid #b9c5ff; border-radius: 999px; color: #2c46c7; background: #f7f8ff; font-size: .75rem; font-weight: 600; }
+        .project .project-link { margin-top: 18px; }
         .hub-list { max-width: 620px; margin: 14px 0 0; }
         .hub-list li { padding: 7px 0; font-size: .85rem; }
         .cv-label, .project-type { color: var(--muted); font-size: .68rem; letter-spacing: .08em; }
+        .cert-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 56px; }
+        .cert-group h3 { padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 1.1rem; letter-spacing: -.02em; }
+        .cert-list { margin: 0; padding: 0; list-style: none; }
+        .cert-item { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+        .cert-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 4px; background: #eeeeee; color: #222222; font-size: .68rem; font-weight: 700; line-height: 1; text-align: center; }
+        .cert-icon.ai { background: #efeee9; color: #111111; }
+        .cert-icon.finance { background: #111111; color: #ffffff; }
+        .cert-icon.award { background: #edf0ff; color: #2946bc; }
+        .cert-icon.language { background: #898dff; color: #ffffff; }
+        .cert-icon img { width: 27px; height: 27px; object-fit: contain; }
+        .cert-item h4 { margin: 0; font-family: "Space Grotesk", sans-serif; font-size: .98rem; letter-spacing: -.02em; }
+        .cert-item p { margin: 2px 0 0; color: var(--muted); font-size: .84rem; }
+        .cert-meta { margin-top: 5px; color: var(--muted); font-size: .76rem; }
         .contact { padding: 64px 0 36px; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); }
         .contact-grid { grid-template-columns: minmax(0, 1fr) 180px; gap: 40px; }
         .contact h2 { max-width: 620px; font-size: clamp(2rem, 5vw, 3.8rem); }
@@ -222,7 +249,7 @@
             .section { padding: 76px 0; }
             .timeline { grid-template-columns: 1fr; gap: 0; }
             .timeline-item { grid-template-columns: 100px 1fr; gap: 14px; }
-            .project-grid, .hub-grid { grid-template-columns: 1fr; }
+            .project-grid, .hub-grid, .cert-groups { grid-template-columns: 1fr; }
             .project { min-height: 270px; }
             .contact { padding: 84px 0 60px; }
             .footer-inner { flex-direction: column; gap: 5px; }
@@ -241,8 +268,8 @@
             <a class="logo" href="#inicio">MG<span>.</span></a>
             <div class="nav-links">
                 <a href="#trayectoria">Experience</a>
-                <a href="#proyectos">Projects</a>
                 <a href="#educacion">Education</a>
+                <a href="#proyectos">Projects</a>
                 <a href="#certificados">Certificates</a>
                 <a href="#research">Research</a>
                 <a class="nav-cta" href="#contacto">Contact</a>
@@ -256,7 +283,7 @@
                 <div>
                     <p class="eyebrow">Resume · Madrid</p>
                     <h1>Miguel<br>Gabaldón<br>Poncela<span style="color: var(--orange);">.</span></h1>
-                    <p class="hero-lead">I am a Mathematical Engineering and Artificial Intelligence student at Universidad Pontificia Comillas. I am interested in artificial intelligence, computer vision and building software that turns technical ideas into useful systems.</p>
+                    <p class="hero-lead">I am a Mathematical Engineering and Artificial Intelligence student at Universidad Pontificia Comillas and at the University of Illinois Urbana-Champaign. My main interests are forecasting and machine learning, alongside artificial intelligence and natural language processing, especially their applications in economics, finance and energy.</p>
                     <div class="hero-links" aria-label="Social links">
                         <a href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">GitHub</a>
                         <a href="https://www.linkedin.com/in/miguel-gabald%C3%B3n-poncela-8237082b/" target="_blank" rel="noopener">LinkedIn</a>
@@ -275,96 +302,103 @@
             <div class="section-heading">
                     <span class="section-kicker">01 / Experience</span>
                 <div>
-                    <h2>Learning by building.</h2>
-                    <p class="intro-copy">A brief overview of my academic and practical experience. I will expand this section with new roles, collaborations and achievements.</p>
+                    <h2>Professional Experience</h2>
+                    <p class="intro-copy">A selection of my professional experience across finance, energy research, sports and education, including internships, research roles and leadership positions.</p>
                 </div>
             </div>
             <div class="timeline">
                 <article class="timeline-item">
                     <div class="experience-meta"><span class="date">Jun 2026 — Jul 2026<br>2 mos</span><span class="company-icon pwc" aria-label="PwC"><img src="pwc.jpg" alt="PwC logo"></span></div>
-                    <div><h3>Deals Intern</h3><p><strong>PwC</strong><br>Madrid, Community of Madrid, Spain · On-site</p><p>Member of the Financial Decisions and Analysis (FDnA) department, within Deals, as part of the Summer Excellence Programme.</p><div class="tag-row"><span class="tag">Financial Analysis</span><span class="tag">Deals</span></div></div>
+                    <div><h3>Deals Intern</h3><p><strong>PwC</strong><br>Madrid, Community of Madrid, Spain · On-site</p><p>Member of the Financial Decisions and Analysis (FDnA) department, within Deals, as part of the Summer Excellence Programme.</p></div>
                 </article>
                 <article class="timeline-item">
                     <div class="experience-meta"><span class="date">Oct 2025 — Jun 2026<br>9 mos</span><span class="company-icon iit" aria-label="Instituto de Investigación Tecnológica"><img src="iit.jfif" alt="IIT logo"></span></div>
-                    <div><h3>Research Assistant in Modeling and Regulatory Analysis of Energy Systems</h3><p><strong>Instituto de Investigación Tecnológica</strong> · Internship<br>Madrid, Community of Madrid, Spain · On-site</p><p>Research Assistant in Modeling and Regulatory Analysis of Energy Systems under the leadership of Dr. Carlos Batlle.</p><div class="tag-row"><span class="tag">Research</span><span class="tag">Energy Systems</span></div></div>
-                </article>
-                <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">Sep 2024 — May 2026<br>1 yr 9 mos</span><span class="company-icon fbm" aria-label="Federación de Baloncesto de Madrid"><img src="fbm.jfif" alt="FBM logo"></span></div>
-                    <div><h3>Table Official</h3><p><strong>FBM (Federación de Baloncesto de Madrid)</strong><br>Madrid, Community of Madrid, Spain</p><p>Official table staff for basketball competitions.</p><div class="tag-row"><span class="tag">Sports Coaching</span></div></div>
+                    <div><h3>Research Assistant in Modeling and Regulatory Analysis of Energy Systems</h3><p><strong>Instituto de Investigación Tecnológica</strong> · Internship<br>Madrid, Community of Madrid, Spain · On-site</p><p>Research Assistant in Modeling and Regulatory Analysis of Energy Systems under the leadership of Dr. <a href="https://energy.mit.edu/profile/carlos-batlle/" target="_blank" rel="noopener">Carlos Batlle</a>.</p></div>
                 </article>
                 <article class="timeline-item">
                     <div class="experience-meta"><span class="date">Sep 2025<br>1 mo</span><span class="company-icon fbm" aria-label="Federación de Baloncesto de Madrid"><img src="fbm.jfif" alt="FBM logo"></span></div>
-                    <div><h3>Basketball Coach</h3><p><strong>FBM (Federación de Baloncesto de Madrid)</strong><br>Madrid, Community of Madrid, Spain · On-site</p><p>Coach at the Summer Camp of the Madrid Basketball Federation.</p><div class="tag-row"><span class="tag">Sports Coaching</span></div></div>
+                    <div><h3>Basketball Coach</h3><p><strong>FBM (Federación de Baloncesto de Madrid)</strong><br>Madrid, Community of Madrid, Spain · On-site</p><p>Coach at the Summer Camp of the Madrid Basketball Federation.</p></div>
                 </article>
                 <article class="timeline-item">
                     <div class="experience-meta"><span class="date">Jun 2025 — Aug 2025<br>3 mos</span><span class="company-icon ymca" aria-label="YMCA of Greater Hartford"><img src="ymca.png" alt="YMCA logo"></span></div>
-                    <div><h3>Overnight Senior Counselor</h3><p><strong>YMCA of Greater Hartford</strong> · Direct Contract<br>Woodstock, Connecticut, United States · On-site</p><div class="tag-row"><span class="tag">Sports Coaching</span><span class="tag">English</span></div></div>
+                    <div><h3>Overnight Senior Counselor</h3><p><strong>YMCA of Greater Hartford</strong> · Direct Contract<br>Woodstock, Connecticut, United States · On-site</p></div>
                 </article>
                 <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">Sep 2022 — Aug 2024<br>2 yrs</span><span class="company-icon education" aria-label="Colegio Nuestra Señora del Buen Consejo">B.C.</span></div>
-                    <div><h3>Head Coach</h3><p><strong>Colegio Nuestra Señora del Buen Consejo</strong><br>Madrid, Community of Madrid, Spain · On-site</p><div class="tag-row"><span class="tag">Sports Coaching</span></div></div>
+                    <div class="experience-meta"><span class="date">Sep 2022 — Aug 2024<br>2 yrs</span><span class="company-icon education" aria-label="Colegio Nuestra Señora del Buen Consejo"><img src="cbc.png" alt="Colegio Buen Consejo logo"></span></div>
+                    <div><h3>Head Coach</h3><p><strong>Colegio Nuestra Señora del Buen Consejo</strong><br>Madrid, Community of Madrid, Spain · On-site</p></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section shell" id="educacion">
+            <div class="section-heading">
+                <span class="section-kicker">02 / Education</span>
+                <div><h2>Education</h2></div>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Aug 2026 — May 2027</span><span class="company-icon education" aria-label="University of Illinois Urbana-Champaign"><img src="uiuc.png" alt="University of Illinois logo"></span></div>
+                    <div><h3>University of Illinois Urbana-Champaign</h3><p>Mathematics and Computer Science.</p></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Sep 2023 — May 2027</span><span class="company-icon education" aria-label="Universidad Pontificia Comillas"><img src="icai.avif" alt="ICAI logo"></span></div>
+                    <div><h3>Universidad Pontificia Comillas</h3><p>Bachelor of Mathematical Engineering and A.I.</p></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">High school</span><span class="company-icon education" aria-label="Colegio Nuestra Señora del Buen Consejo"><img src="cbc.png" alt="Colegio Buen Consejo logo"></span></div>
+                    <div><h3>Colegio Nuestra Señora del Buen Consejo</h3><p>Science track.<br>EVAU grade: 13.35/14.</p></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Aug 2021 — Aug 2022</span><span class="company-icon education" aria-label="Oak Hills High School"><img src="oakhills.png" alt="Oak Hills High School logo"></span></div>
+                    <div><h3>Oak Hills High School</h3><p>Grade: 4.0/4.0. Varsity Soccer and Varsity Volleyball. Completed college credit courses including AP Chemistry, AP Calculus BC and AP Physics.</p></div>
+                </article>
+                <article class="timeline-item">
+                    <div class="experience-meta"><span class="date">Feb 2016 — Aug 2019</span><span class="company-icon education" aria-label="European School Varese"><img src="esv.jpg" alt="European School Varese logo"></span></div>
+                    <div><h3>European School Varese</h3><p>Grade: SUMMA CUM LAUDE.</p></div>
                 </article>
             </div>
         </section>
 
         <section class="section shell" id="proyectos">
             <div class="section-heading">
-                <span class="section-kicker">02 / Project hub</span>
-                <div><h2>Ideas you can run.</h2><p class="intro-copy">A selection of public projects and repositories I have worked on. Each card links directly to its code.</p></div>
+                <span class="section-kicker">03 / Project hub</span>
+                <div><h2>Projects</h2><p class="intro-copy">A selection of public projects and repositories I have worked on. Each card links directly to its code.</p></div>
             </div>
             <div class="project-grid">
-                <article class="project"><div><span class="project-type">Computer vision · Python</span><h3>Interactive security and tracking</h3><p>Camera calibration, QR code reading, hand tracking and gesture classification for a Rock, Paper, Scissors game.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/Proyecto-Final-Computer-Vision-I" target="_blank" rel="noopener">View repository</a></article>
-                <article class="project"><div><span class="project-type">Deep learning · Coursework</span><h3>Deep learning</h3><p>Academic repository focused on the foundations and practice of deep learning.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/deep-learning" target="_blank" rel="noopener">View repository</a></article>
-                <article class="project"><div><span class="project-type">Robotics · Simulation</span><h3>sim_ws</h3><p>Public workspace for robotics simulation and experimentation.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/sim_ws" target="_blank" rel="noopener">View repository</a></article>
-                <article class="project"><div><span class="project-type">Open source · Collaboration</span><h3>More projects</h3><p>Hackathons, experiments and other repositories documenting my work.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">Explore GitHub</a></article>
-            </div>
-        </section>
-
-        <section class="section shell" id="educacion">
-            <div class="section-heading">
-                <span class="section-kicker">03 / Education</span>
-                <div><h2>The foundation for what comes next.</h2><p class="intro-copy">My academic background combines engineering, programming and artificial intelligence, with a focus on turning theory into projects.</p></div>
-            </div>
-            <div class="timeline">
-                <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">Aug 2026 — May 2027</span><span class="company-icon education" aria-label="University of Illinois Urbana-Champaign"><img src="uiuc.png" alt="University of Illinois logo"></span></div>
-                    <div><h3>University of Illinois Urbana-Champaign</h3><p>Mathematics and Computer Science.</p><div class="tag-row"><span class="tag">Mathematics</span><span class="tag">Computer Science</span></div></div>
-                </article>
-                <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">Sep 2023 — May 2027</span><span class="company-icon education" aria-label="Universidad Pontificia Comillas">ICAi</span></div>
-                    <div><h3>Universidad Pontificia Comillas</h3><p>Bachelor of Mathematical Engineering and A.I.</p><div class="tag-row"><span class="tag">Amazon Web Services (AWS)</span><span class="tag">C#</span><span class="tag">+9 skills</span></div></div>
-                </article>
-                <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">High school</span><span class="company-icon education" aria-label="Colegio Nuestra Señora del Buen Consejo">B.C.</span></div>
-                    <div><h3>Colegio Nuestra Señora del Buen Consejo</h3><p>Science track.</p><div class="tag-row"><span class="tag">EVAU: 13.35/14</span></div></div>
-                </article>
-                <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">Aug 2021 — Aug 2022</span><span class="company-icon education" aria-label="Oak Hills High School"><img src="oakhills.png" alt="Oak Hills High School logo"></span></div>
-                    <div><h3>Oak Hills High School</h3><p>Grade: 4.0/4.0. Varsity Soccer and Varsity Volleyball. Completed college credit courses including AP Chemistry, AP Calculus BC and AP Physics.</p><div class="tag-row"><span class="tag">English</span></div></div>
-                </article>
-                <article class="timeline-item">
-                    <div class="experience-meta"><span class="date">Feb 2016 — Aug 2019</span><span class="company-icon education" aria-label="European School Varese">ESV</span></div>
-                    <div><h3>European School Varese</h3><p>Grade: SUMMA CUM LAUDE.</p><div class="tag-row"><span class="tag">English</span><span class="tag">Arduino</span></div></div>
-                </article>
+                <article class="project"><div class="project-media"><img class="project-image" src="https://opengraph.githubassets.com/1/MiguelGabaldon/Proyecto-Final-Computer-Vision-I" alt="Interactive security and tracking project preview"></div><div class="project-body"><span class="project-type">Computer vision · Python</span><h3>Interactive security and tracking</h3><div class="project-tags"><span class="project-tag">OpenCV</span><span class="project-tag">Hand tracking</span><span class="project-tag">QR codes</span></div><p>Camera calibration, QR code reading, hand tracking and gesture classification for a Rock, Paper, Scissors game.</p><a class="project-link" href="https://github.com/MiguelGabaldon/Proyecto-Final-Computer-Vision-I" target="_blank" rel="noopener">View repository</a></div></article>
+                <article class="project"><div class="project-media"><img class="project-image" src="https://opengraph.githubassets.com/1/MiguelGabaldon/deep-learning" alt="Deep learning project preview"></div><div class="project-body"><span class="project-type">Deep learning · Coursework</span><h3>Deep learning</h3><div class="project-tags"><span class="project-tag">PyTorch</span><span class="project-tag">Neural networks</span><span class="project-tag">Python</span></div><p>Academic repository focused on the foundations and practice of deep learning.</p><a class="project-link" href="https://github.com/MiguelGabaldon/deep-learning" target="_blank" rel="noopener">View repository</a></div></article>
+                <article class="project"><div class="project-media"><img class="project-image" src="https://opengraph.githubassets.com/1/MiguelGabaldon/sim_ws" alt="Robotics simulation project preview"></div><div class="project-body"><span class="project-type">Robotics · Simulation</span><h3>sim_ws</h3><div class="project-tags"><span class="project-tag">Robotics</span><span class="project-tag">Simulation</span><span class="project-tag">ROS</span></div><p>Public workspace for robotics simulation and experimentation.</p><a class="project-link" href="https://github.com/MiguelGabaldon/sim_ws" target="_blank" rel="noopener">View repository</a></div></article>
+                <article class="project"><div class="project-media"><img class="project-image" src="https://github.com/MiguelGabaldon.png" alt="Miguel Gabaldon GitHub project collection"></div><div class="project-body"><span class="project-type">Open source · Collaboration</span><h3>More projects</h3><div class="project-tags"><span class="project-tag">Hackathons</span><span class="project-tag">Experiments</span><span class="project-tag">Open source</span></div><p>Hackathons, experiments and other repositories documenting my work.</p><a class="project-link" href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">Explore GitHub</a></div></article>
             </div>
         </section>
 
         <section class="section shell" id="certificados">
             <div class="section-heading">
                 <span class="section-kicker">04 / Certificate hub</span>
-                <div><h2>Learning you can verify.</h2><p class="intro-copy">This space will collect certificates, courses and credentials with their corresponding links or documents.</p></div>
+                <div><h2>Certifications</h2><p class="intro-copy">Selected certifications and achievements, organized by area.</p></div>
             </div>
-            <div class="hub-grid">
-                <article class="hub-card"><div><span class="cv-label">Coming soon</span><h3>Technical certificates</h3><p>Space prepared for Python, AI, cloud and development tool courses.</p></div><span class="project-link">Being updated</span></article>
-                <article class="hub-card"><div><span class="cv-label">Coming soon</span><h3>Courses and training</h3><p>Additional training listed with its date, institution and evidence.</p></div><span class="project-link">Being updated</span></article>
-                <article class="hub-card"><div><span class="cv-label">Format</span><h3>Credentials</h3><ul class="hub-list"><li>Certificate name</li><li>Issuing institution</li><li>Verification link</li></ul></div></article>
+            <div class="cert-groups">
+                <section class="cert-group" aria-labelledby="cert-ai"><h3 id="cert-ai">AI</h3><ul class="cert-list">
+                    <li class="cert-item"><span class="cert-icon ai" aria-label="Anthropic logo"><img src="https://cdn.simpleicons.org/anthropic" alt="Anthropic logo"></span><div><h4>Introduction to Model Context Protocol</h4><p>Anthropic</p><p class="cert-meta">Intro to MCP</p></div></li>
+                    <li class="cert-item"><span class="cert-icon ai" aria-hidden="true">P</span><div><h4>Power IA</h4><p>thePower</p><p class="cert-meta">Issued Jul 2026 · Credential ID available</p></div></li>
+                    <li class="cert-item"><span class="cert-icon ai" aria-label="Hugging Face logo"><img src="https://cdn.simpleicons.org/huggingface" alt="Hugging Face logo"></span><div><h4>LLM Course</h4><p>Hugging Face</p><p class="cert-meta">Issued Jan 2026</p></div></li>
+                </ul></section>
+                <section class="cert-group" aria-labelledby="cert-finance"><h3 id="cert-finance">Finance</h3><ul class="cert-list">
+                    <li class="cert-item"><span class="cert-icon finance" aria-hidden="true">B</span><div><h4>Bloomberg Finance Fundamentals</h4><p>Bloomberg</p><p class="cert-meta">Issued Oct 2025 · Credential ID available</p></div></li>
+                </ul></section>
+                <section class="cert-group" aria-labelledby="cert-awards"><h3 id="cert-awards">Awards</h3><ul class="cert-list">
+                    <li class="cert-item"><span class="cert-icon award" aria-hidden="true">COITT</span><div><h4>Olimpiada de Teleco</h4><p>COITT</p><p class="cert-meta">Issued May 2023</p></div></li>
+                </ul></section>
+                <section class="cert-group" aria-labelledby="cert-languages"><h3 id="cert-languages">Languages</h3><ul class="cert-list">
+                    <li class="cert-item"><span class="cert-icon language" aria-hidden="true">TOEFL</span><div><h4>TOEFL iBT 110/120</h4><p>TOEFL</p><p class="cert-meta">Issued Sep 2025 · English</p></div></li>
+                </ul></section>
             </div>
         </section>
 
         <section class="section shell" id="research">
             <div class="section-heading">
                 <span class="section-kicker">05 / Research</span>
-                <div><h2>Questions before answers.</h2><p class="intro-copy">A hub for research, reading, experiments and notes on artificial intelligence, computer vision and robotics.</p></div>
+                <div><h2>Research</h2><p class="intro-copy">A hub for research, reading, experiments and notes on artificial intelligence, computer vision and robotics.</p></div>
             </div>
             <div class="hub-grid">
                 <article class="hub-card"><div><span class="cv-label">Area of interest</span><h3>Deep learning</h3><p>Foundations, models and practices explored in my academic work.</p></div><a class="project-link" href="https://github.com/MiguelGabaldon/deep-learning" target="_blank" rel="noopener">View repository</a></article>
@@ -376,7 +410,7 @@
 
     <section class="contact" id="contacto">
         <div class="shell contact-grid">
-            <div><p class="eyebrow" style="color: var(--yellow);">06 / Contact</p><h2>Let&apos;s talk about what&apos;s next.</h2><p class="contact-copy">I am building my next professional chapter. You can find me on GitHub or reach out through LinkedIn.</p></div>
+            <div><p class="eyebrow" style="color: var(--yellow);">06 / Contact</p><h2>Contact</h2><p class="contact-copy">I am building my next professional chapter. You can find me on GitHub or reach out through LinkedIn.</p></div>
             <div class="contact-links"><a class="contact-link" href="https://github.com/MiguelGabaldon" target="_blank" rel="noopener">GitHub ↗</a><a class="contact-link" href="https://www.linkedin.com/in/miguel-gabald%C3%B3n-poncela-8237082b/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
         </div>
     </section>
